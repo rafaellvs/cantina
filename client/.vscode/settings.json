@@ -1,0 +1,22 @@
+{
+  "workbench.colorTheme": "GitHub Dark Dimmed",
+  "eslint.format.enable": true,
+  "editor.minimap.enabled": false,
+  "explorer.compactFolders": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript"],
+  "editor.tabSize": 2,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "eslint.codeActionsOnSave.rules": null,
+  "gitlens.codeLens.enabled": false,
+  "css.lint.unknownAtRules": "ignore",
+  "prettier.configPath": ".prettierrc",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}
