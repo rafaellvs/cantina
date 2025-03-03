@@ -1,6 +1,5 @@
 import { userSettingsRepository } from '@/repository/userSettings'
 import { userSettingsInitialState } from '@/repository/userSettings/localStorage'
-import { Message } from '@/types/Message'
 import { UserSettings } from '@/types/UserSettings'
 import { PropsWithChildren, createContext, useState } from 'react'
 
@@ -29,20 +28,10 @@ export const UserSettingsContextProvider = (props: PropsWithChildren) => {
   }
 
   const logout = (ws: WebSocket) => {
-    const message: Message = {
-      type: 'metadata',
-      userSettings: userSettings,
-      data: `${userSettings.nickname} saiu da sala.`,
-      timestamp: Date.now(),
-    }
-    ws.send(JSON.stringify(message))
     ws.close()
-
     updateUserSettings(userSettingsInitialState)
     repository.logout()
   }
-
-  console.log(userSettings)
 
   return (
     <UserSettingsContext.Provider
