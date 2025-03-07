@@ -1,24 +1,24 @@
-import { Chat } from '@/components/Chat'
-import { Navbar } from '@/components/Navbar'
-import { SendMessage } from '@/components/SendMessage'
-// import { useWSContext } from '@/contexts/WS/hook'
+import { Chat } from '@/components/Chat/Chat'
+import { Navbar } from '@/components/Navbar/Navbar'
+import { SendMessage } from '@/components/Chat/SendMessage'
 import { WsConn, createWsConn } from '@/lib/ws'
-import { Message } from '@/types/Message'
+import { Message, MessageEvent } from '@/types/Message.type'
+import { UserSettings } from '@/types/UserSettings.type'
 import { useEffect, useState } from 'react'
 
 export const ChatPage = () => {
-  const [chat, setChat] = useState<Array<Message>>([])
+  const [chat, setChat] = useState<Message[]>([])
   const [ws, setWs] = useState<WebSocket | null>(null)
+  const [usersOnline, setUsersOnline] = useState<UserSettings[]>([])
 
   const onMessage: WsConn['onMessage'] = (msg) => {
+    if (msg.event === MessageEvent.USERS_ONLINE) {
+      typeof msg.data !== 'string' && setUsersOnline(msg.data)
+      return
+    }
+
     setChat((chat) => [msg, ...chat])
   }
-
-  // const { ws } = useWSContext({ onMessage })
-
-  // useEffect(() => {
-  //   return () => ws.close()
-  // }, [])
 
   useEffect(() => {
     const ws = createWsConn({ onMessage })
@@ -29,7 +29,7 @@ export const ChatPage = () => {
 
   return (
     <div className="w-screen h-dvh flex flex-col p-6 sm:p-12">
-      <Navbar ws={ws} />
+      <Navbar ws={ws} usersOnline={usersOnline} />
       <Chat chat={chat} />
       <SendMessage ws={ws} />
     </div>

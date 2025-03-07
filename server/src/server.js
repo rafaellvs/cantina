@@ -1,5 +1,10 @@
-import WebSocket, { WebSocketServer } from "ws";
+import { WebSocketServer } from "ws";
 import { MessageBuilder } from "./message-builder.js";
+import {
+  addToUsersOnline,
+  removeFromUsersOnline,
+  usersOnline,
+} from "./usersOnline.js";
 
 const wss = new WebSocketServer({
   port: 8080,
@@ -7,21 +12,27 @@ const wss = new WebSocketServer({
 
 wss.on("connection", (ws, req) => {
   const params = new URLSearchParams(req.url.split("?")[1]);
-  const nickname = params.get("nickname");
-  console.info("User connected: ", nickname);
+  const user = {
+    nickname: params.get("nickname"),
+  };
+  console.info("User connected: ", user.nickname);
 
-  const messageBuilder = new MessageBuilder(nickname);
+  const messageBuilder = new MessageBuilder(user.nickname);
+  addToUsersOnline(user);
   broadcast(messageBuilder.userJoined());
+  broadcast(messageBuilder.usersOnline(usersOnline));
 
   ws.on("error", console.error);
 
   ws.on("close", () => {
-    console.info(`User ${nickname} disconnected.`);
+    console.info(`User ${user.nickname} disconnected.`);
+    removeFromUsersOnline(user);
     broadcast(messageBuilder.userLeft());
+    broadcast(messageBuilder.usersOnline(usersOnline));
   });
 
   ws.on("message", function message(data) {
-    console.info(`User ${nickname} sent message: `, data.toString());
+    console.info(`User ${user.nickname} sent message: `, data.toString());
     broadcast(data);
   });
 });

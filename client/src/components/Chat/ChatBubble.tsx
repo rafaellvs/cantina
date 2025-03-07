@@ -1,5 +1,5 @@
 import { useUserSettingsContext } from '@/contexts/UserSettings/hook'
-import { Message } from '@/types/Message'
+import { Message } from '@/types/Message.type'
 
 type Props = {
   msg: Message
@@ -8,8 +8,9 @@ type Props = {
 export const ChatBubble = (props: Props) => {
   const { userSettings } = useUserSettingsContext()
   const { msg } = props
-
   const isMessageLocal = msg.userSettings.nickname === userSettings.nickname
+
+  if (typeof msg.data !== 'string') return null
 
   return (
     <div
