@@ -1,5 +1,5 @@
 import { userSettingsRepository } from '@/repository/userSettings'
-import { Message } from '@/types/Message'
+import { Message } from '@/types/Message.type'
 
 // const WS_URL = 'ws://192.168.0.38:8080'
 const WS_URL = 'ws://localhost:8080'

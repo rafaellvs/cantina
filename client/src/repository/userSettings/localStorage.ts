@@ -1,11 +1,11 @@
-import { UserSettings, UserSettingsRepository } from '@/types/UserSettings'
+import { UserSettings, UserSettingsRepository } from '@/types/UserSettings.type'
 
 const USERSETTINGS_LOCALSTORAGE_KEY = 'userSettings'
 
 export const userSettingsInitialState: UserSettings = {
   nickname: '',
   bgColor: '',
-  isTyping: false,
+  // isTyping: false,
 }
 
 export const getLocalStorageUserSettings = (): UserSettings => {

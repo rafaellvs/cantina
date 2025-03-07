@@ -1,6 +1,6 @@
 import { ChatBubble } from '@/components/Chat/ChatBubble'
 import { Metadata } from '@/components/Chat/Metadata'
-import { Message } from '@/types/Message'
+import { Message, MessageType } from '@/types/Message.type'
 
 type Props = {
   chat: Array<Message>
@@ -18,10 +18,10 @@ const renderChatMessage = (msg: Message) => {
   const key = msg.userSettings.nickname + msg.timestamp
 
   switch (msg.type) {
-    case 'message':
+    case MessageType.MESSAGE:
       return <ChatBubble key={key} msg={msg} />
 
-    case 'metadata':
+    case MessageType.METADATA:
       return <Metadata key={key} msg={msg} />
   }
 }

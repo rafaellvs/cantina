@@ -1,5 +1,5 @@
 import { useUserSettingsContext } from '@/contexts/UserSettings/hook'
-import { Message } from '@/types/Message'
+import { Message, MessageEvent, MessageType } from '@/types/Message.type'
 import { useState } from 'react'
 
 type Props = {
@@ -12,7 +12,8 @@ export const SendMessage = (props: Props) => {
 
   const sendMessage = () => {
     const msg: Message = {
-      type: 'message',
+      type: MessageType.MESSAGE,
+      event: MessageEvent.MESSAGE,
       userSettings,
       data: inputValue,
       timestamp: Date.now(),

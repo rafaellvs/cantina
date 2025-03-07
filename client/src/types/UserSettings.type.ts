@@ -1,7 +1,7 @@
 export type UserSettings = {
   nickname: string
   bgColor: string
-  isTyping: boolean
+  // isTyping: boolean
 }
 
 export type UserSettingsRepository = {
