@@ -1,19 +1,23 @@
 import { WebSocketServer } from "ws";
-import { MessageBuilder } from "./message-builder.js";
+import { MessageBuilder } from "@/message-builder";
 import {
   addToUsersOnline,
   removeFromUsersOnline,
   usersOnline,
-} from "./usersOnline.js";
+} from "@/users-online";
 
 const wss = new WebSocketServer({
   port: 8080,
 });
 
+wss.on("listening", () => {
+  console.info("Cantina chat server running at port 8080");
+});
+
 wss.on("connection", (ws, req) => {
-  const params = new URLSearchParams(req.url.split("?")[1]);
+  const params = new URLSearchParams(req.url?.split("?")[1]);
   const user = {
-    nickname: params.get("nickname"),
+    nickname: params.get("nickname") || "",
   };
   console.info("User connected: ", user.nickname);
 
@@ -37,7 +41,7 @@ wss.on("connection", (ws, req) => {
   });
 });
 
-const broadcast = (data) => {
+const broadcast = (data: any) => {
   const message = resolveMessage(data);
 
   wss.clients.forEach(function each(client) {
@@ -45,7 +49,7 @@ const broadcast = (data) => {
   });
 };
 
-const resolveMessage = (data) => {
+const resolveMessage = (data: any) => {
   if (typeof data === "string") return data;
   if (Buffer.isBuffer(data)) return data.toString();
 

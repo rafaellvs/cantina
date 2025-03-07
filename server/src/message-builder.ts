@@ -1,5 +1,7 @@
 export class MessageBuilder {
-  constructor(nickname) {
+  nickname: string;
+
+  constructor(nickname: string) {
     this.nickname = nickname;
   }
 
@@ -23,7 +25,7 @@ export class MessageBuilder {
     };
   }
 
-  usersOnline(usersOnline) {
+  usersOnline(usersOnline: any) {
     return {
       type: MessageType.METADATA,
       event: MessageEvent.USERS_ONLINE,
