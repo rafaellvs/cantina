@@ -5,7 +5,6 @@ const USERSETTINGS_LOCALSTORAGE_KEY = 'userSettings'
 export const userSettingsInitialState: UserSettings = {
   nickname: '',
   bgColor: '',
-  // isTyping: false,
 }
 
 export const getLocalStorageUserSettings = (): UserSettings => {
@@ -20,7 +19,10 @@ export const setLocalStorageUserSettings = (userSettings: UserSettings) =>
   )
 
 export const deleteLocalStorageUserSettings = () =>
-  localStorage.removeItem(USERSETTINGS_LOCALSTORAGE_KEY)
+  setLocalStorageUserSettings({
+    ...getLocalStorageUserSettings(),
+    nickname: '',
+  })
 
 export const userSettingsRepositoryLocalStorage: UserSettingsRepository = {
   getUserSettings: getLocalStorageUserSettings,

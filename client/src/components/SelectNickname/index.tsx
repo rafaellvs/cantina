@@ -3,14 +3,15 @@ import { generateRandomHexColor } from '@/utils'
 import { useState } from 'react'
 
 export const SelectNickname = () => {
-  const [nickname, setNickname] = useState('')
-  const [bgColor, setBgColor] = useState(generateRandomHexColor())
-  const { updateUserSettings } = useUserSettingsContext()
+  const { userSettings, updateUserSettings } = useUserSettingsContext()
 
+  const [nickname, setNickname] = useState('')
   const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(event.target.value)
   }
 
+  const bgColorInitialState = userSettings.bgColor || generateRandomHexColor()
+  const [bgColor, setBgColor] = useState(bgColorInitialState)
   const handleBgColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBgColor(event.target.value)
   }

@@ -23,14 +23,14 @@ export const UserSettingsContextProvider = (props: PropsWithChildren) => {
   )
 
   const updateUserSettings = (userSettings: UserSettings) => {
-    setUserSettings(userSettings)
     repository.setUserSettings(userSettings)
+    setUserSettings(repository.getUserSettings())
   }
 
   const logout = (ws: WebSocket) => {
     ws.close()
-    updateUserSettings(userSettingsInitialState)
     repository.logout()
+    setUserSettings(repository.getUserSettings())
   }
 
   return (
