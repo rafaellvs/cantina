@@ -1,2 +1,2 @@
-export const generateRandomNumberBetween = (min: number, max: number) =>
-  Math.ceil(((Math.random() + min) * max) % max)
+export const generateRandomHexColor = () =>
+  '#' + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')

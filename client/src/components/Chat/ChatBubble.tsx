@@ -24,7 +24,12 @@ export const ChatBubble = (props: Props) => {
         </time>
       </div>
       <div
-        className={`chat-bubble ${isMessageLocal ? 'bg-localMessage' : msg.userSettings.bgColor} text-white mt-2`}
+        className={`chat-bubble text-white mt-2`}
+        style={{
+          backgroundColor: isMessageLocal
+            ? userSettings.bgColor
+            : msg.userSettings.bgColor,
+        }}
       >
         {msg.data}
       </div>

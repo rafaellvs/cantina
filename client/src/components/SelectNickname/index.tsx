@@ -1,20 +1,25 @@
 import { useUserSettingsContext } from '@/contexts/UserSettings/hook'
-import { generateRandomUserColor } from '@/repository/userSettings'
+import { generateRandomHexColor } from '@/utils'
 import { useState } from 'react'
 
 export const SelectNickname = () => {
   const [nickname, setNickname] = useState('')
+  const [bgColor, setBgColor] = useState(generateRandomHexColor())
   const { updateUserSettings } = useUserSettingsContext()
 
   const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(event.target.value)
   }
 
+  const handleBgColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBgColor(event.target.value)
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     updateUserSettings({
       nickname,
-      bgColor: generateRandomUserColor(),
+      bgColor,
     })
   }
 
@@ -32,13 +37,21 @@ export const SelectNickname = () => {
         onSubmit={handleSubmit}
         className="w-full max-w-[600px] mx-auto text-center pt-6"
       >
-        <input
-          id="nickname"
-          type="text"
-          value={nickname}
-          onChange={handleNicknameChange}
-          className="input input-bordered w-full"
-        />
+        <div className="flex gap-3">
+          <input
+            id="nickname"
+            type="text"
+            value={nickname}
+            onChange={handleNicknameChange}
+            className="input input-bordered w-full"
+          />
+          <input
+            type="color"
+            className="w-[40px] h-[40px]"
+            value={bgColor}
+            onChange={handleBgColorChange}
+          />
+        </div>
         <button type="submit" className="btn block mx-auto w-full mt-3">
           entrar
         </button>
