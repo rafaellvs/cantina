@@ -1,3 +1,6 @@
+import { MessageType, MessageEvent } from "@/types/Message.type";
+import { User } from "@/types/User.type";
+
 export class MessageBuilder {
   nickname: string;
 
@@ -25,7 +28,7 @@ export class MessageBuilder {
     };
   }
 
-  usersOnline(usersOnline: any) {
+  usersOnline(usersOnline: User[]) {
     return {
       type: MessageType.METADATA,
       event: MessageEvent.USERS_ONLINE,
@@ -34,15 +37,3 @@ export class MessageBuilder {
     };
   }
 }
-
-const MessageEvent = {
-  MESSAGE: "MESSAGE",
-  USER_JOINED: "USER_JOINED",
-  USER_LEFT: "USER_LEFT",
-  USERS_ONLINE: "USERS_ONLINE",
-};
-
-const MessageType = {
-  METADATA: "METADATA",
-  MESSAGE: "MESSAGE",
-};

@@ -49,7 +49,7 @@ export const Navbar = (props: Props) => {
               className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4"
             >
               <li onClick={handleUsersOnline}>
-                <a>Usuários online</a>
+                <a>Quem tá on</a>
               </li>
               <li onClick={handleLogout}>
                 <a>Logout</a>

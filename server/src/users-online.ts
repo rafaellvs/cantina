@@ -1,10 +1,12 @@
-export const usersOnline: any = [];
+import { User } from "@/types/User.type";
 
-export const addToUsersOnline = (user: any) => usersOnline.push(user);
+export const usersOnline: User[] = [];
 
-export const removeFromUsersOnline = (user: any) => {
+export const addToUsersOnline = (user: User) => usersOnline.push(user);
+
+export const removeFromUsersOnline = (user: User) => {
   const idxToRemove = usersOnline.findIndex(
-    (u: any) => user.nickname === u.nickname
+    (u) => user.nickname === u.nickname
   );
   usersOnline.splice(idxToRemove, 1);
 };

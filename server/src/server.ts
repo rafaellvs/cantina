@@ -5,6 +5,7 @@ import {
   removeFromUsersOnline,
   usersOnline,
 } from "@/users-online";
+import { User } from "@/types/User.type";
 
 const wss = new WebSocketServer({
   port: 8080,
@@ -16,7 +17,7 @@ wss.on("listening", () => {
 
 wss.on("connection", (ws, req) => {
   const params = new URLSearchParams(req.url?.split("?")[1]);
-  const user = {
+  const user: User = {
     nickname: params.get("nickname") || "",
   };
   console.info("User connected: ", user.nickname);
