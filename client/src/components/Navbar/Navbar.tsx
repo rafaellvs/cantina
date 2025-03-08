@@ -1,10 +1,10 @@
-import { UsersOnline } from '@/components/Navbar/UsersOnline'
+import { UsersOnlineComponent } from '@/components/Navbar/UsersOnline'
 import { useUserSettingsContext } from '@/contexts/UserSettings/hook'
-import { UserSettings } from '@/types/UserSettings.type'
+import { UsersOnline } from '@/types/User.type'
 
 type Props = {
   ws: WebSocket
-  usersOnline: UserSettings[]
+  usersOnline: UsersOnline
 }
 
 export const Navbar = (props: Props) => {
@@ -58,7 +58,7 @@ export const Navbar = (props: Props) => {
           </div>
         </div>
       </div>
-      <UsersOnline usersOnline={props.usersOnline} />
+      <UsersOnlineComponent usersOnline={props.usersOnline} />
     </>
   )
 }

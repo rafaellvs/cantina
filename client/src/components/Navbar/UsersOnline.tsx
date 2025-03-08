@@ -1,10 +1,10 @@
-import { UserSettings } from '@/types/UserSettings.type'
+import { UsersOnline } from '@/types/User.type'
 
 type Props = {
-  usersOnline: UserSettings[]
+  usersOnline: UsersOnline
 }
 
-export const UsersOnline = (props: Props) => {
+export const UsersOnlineComponent = (props: Props) => {
   return (
     <dialog id="users-online-modal" className="modal">
       <div className="modal-box">

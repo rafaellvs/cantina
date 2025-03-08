@@ -1,6 +1,6 @@
-import { User } from "@/types/User.type";
+import { User, UsersOnline } from "@/types/User.type";
 
-export const usersOnline: User[] = [];
+export const usersOnline: UsersOnline = [];
 
 export const addToUsersOnline = (user: User) => usersOnline.push(user);
 

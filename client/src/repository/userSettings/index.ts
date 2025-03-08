@@ -1,5 +1,5 @@
 import { userSettingsRepositoryLocalStorage } from '@/repository/userSettings/localStorage'
-import { UserSettingsRepository } from '@/types/UserSettings.type'
+import { UserSettingsRepository } from '@/types/User.type'
 import { generateRandomNumberBetween } from '@/utils'
 
 const SELECTED_REPOSITORY = 'localStorage'

@@ -1,4 +1,4 @@
-import { UserSettings, UserSettingsRepository } from '@/types/UserSettings.type'
+import { UserSettings, UserSettingsRepository } from '@/types/User.type'
 
 const USERSETTINGS_LOCALSTORAGE_KEY = 'userSettings'
 

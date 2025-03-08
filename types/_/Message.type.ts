@@ -1,4 +1,4 @@
-import { User, UserSettings } from "./User.type";
+import { UserSettings, UsersOnline } from "./User.type";
 
 export enum MessageType {
   METADATA = "METADATA",
@@ -16,6 +16,6 @@ export type Message = {
   type: MessageType;
   event: MessageEvent;
   userSettings: UserSettings;
-  data: string | User[];
+  data: string | UsersOnline;
   timestamp: number;
 };

@@ -1,5 +1,5 @@
 import { MessageType, MessageEvent } from "@/types/Message.type";
-import { User } from "@/types/User.type";
+import { UsersOnline } from "@/types/User.type";
 
 export class MessageBuilder {
   nickname: string;
@@ -28,7 +28,7 @@ export class MessageBuilder {
     };
   }
 
-  usersOnline(usersOnline: User[]) {
+  usersOnline(usersOnline: UsersOnline) {
     return {
       type: MessageType.METADATA,
       event: MessageEvent.USERS_ONLINE,

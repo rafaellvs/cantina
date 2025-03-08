@@ -2,6 +2,8 @@ export type User = {
   nickname: string;
 };
 
+export type UsersOnline = User[];
+
 export type UserSettings = User & {
   bgColor: string;
 };

@@ -1,6 +1,6 @@
 import { userSettingsRepository } from '@/repository/userSettings'
 import { userSettingsInitialState } from '@/repository/userSettings/localStorage'
-import { UserSettings } from '@/types/UserSettings.type'
+import { UserSettings } from '@/types/User.type'
 import { PropsWithChildren, createContext, useState } from 'react'
 
 type Context = {

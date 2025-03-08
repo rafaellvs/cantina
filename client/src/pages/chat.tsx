@@ -3,13 +3,13 @@ import { Navbar } from '@/components/Navbar/Navbar'
 import { SendMessage } from '@/components/Chat/SendMessage'
 import { WsConn, createWsConn } from '@/lib/ws'
 import { Message, MessageEvent } from '@/types/Message.type'
-import { UserSettings } from '@/types/UserSettings.type'
+import { UsersOnline } from '@/types/User.type'
 import { useEffect, useState } from 'react'
 
 export const ChatPage = () => {
   const [chat, setChat] = useState<Message[]>([])
   const [ws, setWs] = useState<WebSocket | null>(null)
-  const [usersOnline, setUsersOnline] = useState<UserSettings[]>([])
+  const [usersOnline, setUsersOnline] = useState<UsersOnline>([])
 
   const onMessage: WsConn['onMessage'] = (msg) => {
     if (msg.event === MessageEvent.USERS_ONLINE) {
