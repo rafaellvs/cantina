@@ -1,4 +1,4 @@
-import { UsersOnlineComponent } from '@/components/Navbar/UsersOnline'
+import { UsersOnlineComponent } from '@/components/Chat/Navbar/UsersOnline'
 import { useUserSettingsContext } from '@/contexts/UserSettings/hook'
 import { UsersOnline } from '@/types/User.type'
 

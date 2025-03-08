@@ -1,5 +1,5 @@
 import { Chat } from '@/components/Chat/Chat'
-import { Navbar } from '@/components/Navbar/Navbar'
+import { Navbar } from '@/components/Chat/Navbar/Navbar'
 import { SendMessage } from '@/components/Chat/SendMessage'
 import { WsConn, createWsConn } from '@/lib/ws'
 import { Message, MessageEvent } from '@/types/Message.type'
